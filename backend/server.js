@@ -10,8 +10,10 @@ const PORT = 5000;
 app.use(express.json());
 app.use(cors());
 
+
 // MongoDB connection
-mongoose.connect('mongodb+srv://umar_admin:umar1234@cluster0.uroq4ro.mongodb.net/?appName=Cluster0')
+require('dotenv').config(); // Yeh line .env file ko read karegi
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB successfully connected!'))
     .catch((err) => console.error('Database connection error:', err));
 
